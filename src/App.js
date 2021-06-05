@@ -1,19 +1,21 @@
 import React from 'react';
 
-function Food({ fav }) {
-    return <h1>I like {fav}</h1>
-}
+class App extends React.Component{
+    state = {
+        isLoding: true,
+        movies: [],
+    };
 
-function App() {
-  return (
-      <div>
-        <h1>Hello</h1>
-          <Food fav="kimchi" />
-          <Food fav="ramen" />
-          <Food fav="samgiopsal" />
-          <Food fav="chukumi" />
-      </div>
-  );
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ isLoding: false });
+        }, 6000)
+    }
+
+    render() {
+        const { isLoding } = this.state;
+        return <div>{isLoding ? 'Loding...' : 'We are ready'}</div>;
+    }
 }
 
 export default App;
